@@ -1,15 +1,28 @@
-import express from 'express'; 
+express = require('express');
+knex = require('./database/connection');
+uuid = require('uuid');
+uuidv4 = uuid.v4; 
 
-import PetsControllers from './controllers/PetsControllers';
+//petsControllers = require('./controllers/PetsControllers');
 
-const petsControllers = new PetsControllers();
+//const petsControllers = PetsControllers.PetsControllers();
 
-const rotas = express.Router();
+let rotas = express.Router();
 
 rotas.get('/', (request, response) => {
   return response.json({message: "Conectado!"});
 });
 
-rotas.post('/pets', petsControllers.newpet);
+//rotas.post('/pets', petsControllers.newpet);
 
-export default rotas;
+rotas.post('/pets', async (request, response) => {
+  const { nome , sexo, tipo, descricao, doador,  uf, cidade, whatsapp} = request.body;
+        
+  const id = uuidv4();
+  console.log(nome);
+  const registro = { nome, id, sexo, tipo, descricao, doador, whatsapp, uf, cidade };
+  await knex('pets').insert(registro);
+  response.json({message: id });    
+} );
+
+module.exports = rotas;

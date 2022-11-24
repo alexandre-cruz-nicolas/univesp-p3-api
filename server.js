@@ -1,10 +1,10 @@
-import express from 'express';
-import cors from  'cors';
-import path from 'path';
-import { errors } from 'celebrate';
-import bodyParser from 'body-parser';
+express = require('express');
+cors = require('cors');
+path = require('path');
+//{ errors } from 'celebrate';
+bodyParser = require('body-parser');
 
-import rotas from './src/routes';
+rotas = require('./src/routes');
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.use(errors());
+//app.use(errors());
 app.use(rotas);
 
 var porta = process.env.PORT || 3173;
