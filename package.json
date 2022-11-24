@@ -1,0 +1,24 @@
+{
+  "name": "adotepet-api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Alexandre_Nicolas_Univesp_2022",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node server.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "celebrate": "^15.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "knex": "^2.3.0",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "uuid": "^9.0.0"
+  },
+  "type": "module"
+}
